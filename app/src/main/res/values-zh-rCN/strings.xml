@@ -604,4 +604,12 @@
   <string name="remote_confirm_delete_directory">确定删除目录“%1$s”吗？部分服务器还会删除目录内的所有内容，此操作不可撤销。</string>
   <string name="remote_confirm_delete_multiple">确定从远程服务器删除选中的 %1$d 个文件吗？此操作不可撤销。</string>
   <string name="remote_confirm_delete_with_directories">确定删除选中的 %1$d 个项目（包含 %2$d 个目录）吗？部分服务器还会删除目录内的所有内容，此操作不可撤销。</string>
+  <!-- Seek step buttons -->
+  <string name="seek_step_title">快进快退按钮</string>
+  <string name="seek_backward_1">快退按钮 1</string>
+  <string name="seek_backward_2">快退按钮 2</string>
+  <string name="seek_forward_1">快进按钮 1</string>
+  <string name="seek_forward_2">快进按钮 2</string>
+  <string name="seek_backward_desc">快退 %1$d 秒</string>
+  <string name="seek_forward_desc">快进 %1$d 秒</string>
 </resources>

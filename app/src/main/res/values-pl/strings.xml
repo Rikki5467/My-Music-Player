@@ -614,4 +614,12 @@
   <!-- Song menu -->
   <string name="go_to_artist">Przejdź do wykonawcy</string>
   <string name="go_to_album">Przejdź do albumu</string>
+  <!-- Seek step buttons -->
+  <string name="seek_step_title">Przyciski przewijania</string>
+  <string name="seek_backward_1">Przewiń wstecz 1</string>
+  <string name="seek_backward_2">Przewiń wstecz 2</string>
+  <string name="seek_forward_1">Przewiń do przodu 1</string>
+  <string name="seek_forward_2">Przewiń do przodu 2</string>
+  <string name="seek_backward_desc">Przewiń wstecz o %1$d s</string>
+  <string name="seek_forward_desc">Przewiń do przodu o %1$d s</string>
 </resources>

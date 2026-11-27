@@ -622,4 +622,12 @@
   <string name="remote_confirm_delete_directory">Delete directory &quot;%1$s&quot;? Depending on the server, its contents may also be deleted. This cannot be undone.</string>
   <string name="remote_confirm_delete_multiple">Delete %1$d selected files from the remote server? This cannot be undone.</string>
   <string name="remote_confirm_delete_with_directories">Delete %1$d selected items, including %2$d directories? Some servers may also delete their contents. This cannot be undone.</string>
+  <!-- Seek step buttons -->
+  <string name="seek_step_title">Seek buttons</string>
+  <string name="seek_backward_1">Rewind button 1</string>
+  <string name="seek_backward_2">Rewind button 2</string>
+  <string name="seek_forward_1">Forward button 1</string>
+  <string name="seek_forward_2">Forward button 2</string>
+  <string name="seek_backward_desc">Rewind %1$d seconds</string>
+  <string name="seek_forward_desc">Forward %1$d seconds</string>
 </resources>

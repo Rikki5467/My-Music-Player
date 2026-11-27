@@ -67,7 +67,7 @@ private fun Portrait() {
       Modifier
     },
     horizontalAlignment = Alignment.CenterHorizontally,
-    verticalArrangement = Arrangement.spacedBy(30.dp)
+    verticalArrangement = Arrangement.spacedBy(16.dp)
   ) {
     val playbackState by playbackViewModel.playbackUiState.collectAsStateWithLifecycle()
     val swatch by playbackViewModel.swatch.collectAsStateWithLifecycle()
@@ -118,6 +118,13 @@ private fun Portrait() {
     val playingScreenBottom = settingState.playingScreen.bottom
     val showBottomBar = playingScreenBottom != SettingPrefs.BOTTOM_SHOW_NONE
     PlayingControl(Modifier.weight(if (showBottomBar) 1f else 2f), playbackState, swatch)
+
+    PlayingSeekStepControl(
+      modifier = Modifier
+        .fillMaxWidth()
+        .height(48.dp),
+      swatch = swatch
+    )
 
     if (showBottomBar) {
       PlayingUtilityBar(
@@ -234,6 +241,11 @@ private fun RegularLandscape() {
     PlayingSeekbarWithText(swatch)
 
     PlayingControl(Modifier.weight(1f), playbackState, swatch)
+
+    PlayingSeekStepControl(
+      modifier = Modifier.weight(0.7f),
+      swatch = swatch
+    )
   }
 }
 
@@ -285,6 +297,15 @@ private fun CompactLandscape(useExpandedControls: Boolean) {
         iconSize = if (useExpandedControls) 48.dp else null,
         playPauseSize = if (useExpandedControls) 80.dp else 56.dp,
         buttonSize = if (useExpandedControls) 92.dp else null
+      )
+
+      PlayingSeekStepControl(
+        modifier = Modifier
+          .fillMaxWidth()
+          .height(if (useExpandedControls) 64.dp else 44.dp),
+        swatch = swatch,
+        iconSize = if (useExpandedControls) 40.dp else 28.dp,
+        buttonSize = if (useExpandedControls) 64.dp else 44.dp
       )
     }
 

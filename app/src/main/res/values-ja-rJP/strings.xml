@@ -596,4 +596,12 @@
   <string name="remote_confirm_delete_directory">フォルダー「%1$s」を削除しますか？サーバーによっては中のファイルも削除されます。この操作は元に戻せません。</string>
   <string name="remote_confirm_delete_multiple">選択した %1$d 個のファイルをリモートサーバーから削除しますか？この操作は元に戻せません。</string>
   <string name="remote_confirm_delete_with_directories">%2$d 個のフォルダーを含む %1$d 個の項目を削除しますか？サーバーによってはフォルダー内の内容も削除されます。この操作は元に戻せません。</string>
+  <!-- Seek step buttons -->
+  <string name="seek_step_title">早戻し・早送りボタン</string>
+  <string name="seek_backward_1">早戻しボタン 1</string>
+  <string name="seek_backward_2">早戻しボタン 2</string>
+  <string name="seek_forward_1">早送りボタン 1</string>
+  <string name="seek_forward_2">早送りボタン 2</string>
+  <string name="seek_backward_desc">%1$d 秒戻す</string>
+  <string name="seek_forward_desc">%1$d 秒進む</string>
 </resources>
