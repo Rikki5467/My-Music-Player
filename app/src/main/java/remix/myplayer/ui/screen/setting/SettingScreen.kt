@@ -61,6 +61,7 @@ import remix.myplayer.ui.screen.setting.logic.playingscreen.KeepScreenOnLogic
 import remix.myplayer.ui.screen.setting.logic.playingscreen.PlayingCoverAnimationLogic
 import remix.myplayer.ui.screen.setting.logic.playingscreen.PlayingScreenBackgroundLogic
 import remix.myplayer.ui.screen.setting.logic.playingscreen.PlayingScreenBottomLogic
+import remix.myplayer.ui.screen.setting.logic.playingscreen.SeekStepLogic
 import remix.myplayer.ui.theme.LocalTheme
 import remix.myplayer.ui.widget.common.CommonAppBar
 import remix.myplayer.viewmodel.mainViewModel
@@ -258,6 +259,8 @@ private fun PlayingScreenPreferenceItems() {
   PlayingScreenBackgroundLogic()
 
   PlayingScreenBottomLogic()
+
+  SeekStepLogic()
 
   KeepScreenOnLogic()
 }

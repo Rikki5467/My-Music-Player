@@ -73,6 +73,10 @@ data class LibrarySettings(
 data class PlayingScreenSettings(
   val background: Int,
   val bottom: Int,
+  val seekBackward1Seconds: Int,
+  val seekBackward2Seconds: Int,
+  val seekForward1Seconds: Int,
+  val seekForward2Seconds: Int,
   val keepScreenOn: Boolean,
 )
 

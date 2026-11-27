@@ -223,6 +223,18 @@ object PrefKeys {
     /** 片尾跳过时长（秒） */
     const val SKIP_OUTRO_SECONDS = "skip_outro_seconds"
 
+    /** 播放页快退按钮 1 秒数 */
+    const val SEEK_BACKWARD_1_SECONDS = "seek_backward_1_seconds"
+
+    /** 播放页快退按钮 2 秒数 */
+    const val SEEK_BACKWARD_2_SECONDS = "seek_backward_2_seconds"
+
+    /** 播放页快进按钮 1 秒数 */
+    const val SEEK_FORWARD_1_SECONDS = "seek_forward_1_seconds"
+
+    /** 播放页快进按钮 2 秒数 */
+    const val SEEK_FORWARD_2_SECONDS = "seek_forward_2_seconds"
+
     override val latestVersion = 3
   }
 

@@ -137,6 +137,10 @@ class SettingViewModel @Inject constructor(
     playingScreen = PlayingScreenSettings(
       background = settingPrefs.playingScreenBackground,
       bottom = settingPrefs.playingScreenBottom,
+      seekBackward1Seconds = SettingPrefs.normalizeSeekStepSeconds(settingPrefs.seekBackward1Seconds),
+      seekBackward2Seconds = SettingPrefs.normalizeSeekStepSeconds(settingPrefs.seekBackward2Seconds),
+      seekForward1Seconds = SettingPrefs.normalizeSeekStepSeconds(settingPrefs.seekForward1Seconds),
+      seekForward2Seconds = SettingPrefs.normalizeSeekStepSeconds(settingPrefs.seekForward2Seconds),
       keepScreenOn = settingPrefs.keepScreenOn
     ),
     cover = CoverSettings(
@@ -411,6 +415,38 @@ class SettingViewModel @Inject constructor(
   fun setPlayingScreenBottom(bottom: Int) {
     settingPrefs.playingScreenBottom = bottom
     _settingsState.update { it.copy(playingScreen = it.playingScreen.copy(bottom = bottom)) }
+  }
+
+  fun setSeekBackward1Seconds(seconds: Int) {
+    val normalized = SettingPrefs.normalizeSeekStepSeconds(seconds)
+    settingPrefs.seekBackward1Seconds = normalized
+    _settingsState.update {
+      it.copy(playingScreen = it.playingScreen.copy(seekBackward1Seconds = normalized))
+    }
+  }
+
+  fun setSeekBackward2Seconds(seconds: Int) {
+    val normalized = SettingPrefs.normalizeSeekStepSeconds(seconds)
+    settingPrefs.seekBackward2Seconds = normalized
+    _settingsState.update {
+      it.copy(playingScreen = it.playingScreen.copy(seekBackward2Seconds = normalized))
+    }
+  }
+
+  fun setSeekForward1Seconds(seconds: Int) {
+    val normalized = SettingPrefs.normalizeSeekStepSeconds(seconds)
+    settingPrefs.seekForward1Seconds = normalized
+    _settingsState.update {
+      it.copy(playingScreen = it.playingScreen.copy(seekForward1Seconds = normalized))
+    }
+  }
+
+  fun setSeekForward2Seconds(seconds: Int) {
+    val normalized = SettingPrefs.normalizeSeekStepSeconds(seconds)
+    settingPrefs.seekForward2Seconds = normalized
+    _settingsState.update {
+      it.copy(playingScreen = it.playingScreen.copy(seekForward2Seconds = normalized))
+    }
   }
 
   fun setKeepScreenOn(enabled: Boolean) {

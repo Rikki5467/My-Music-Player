@@ -191,6 +191,26 @@ class SettingPrefs @Inject constructor(
     PrefKeys.Setting.BOTTOM_OF_NOW_PLAYING_SCREEN,
     BOTTOM_SHOW_BOTH
   )
+  var seekBackward1Seconds by PrefsDelegate(
+    sp,
+    PrefKeys.Setting.SEEK_BACKWARD_1_SECONDS,
+    SEEK_BACKWARD_1_DEFAULT_SECONDS
+  )
+  var seekBackward2Seconds by PrefsDelegate(
+    sp,
+    PrefKeys.Setting.SEEK_BACKWARD_2_SECONDS,
+    SEEK_BACKWARD_2_DEFAULT_SECONDS
+  )
+  var seekForward1Seconds by PrefsDelegate(
+    sp,
+    PrefKeys.Setting.SEEK_FORWARD_1_SECONDS,
+    SEEK_FORWARD_1_DEFAULT_SECONDS
+  )
+  var seekForward2Seconds by PrefsDelegate(
+    sp,
+    PrefKeys.Setting.SEEK_FORWARD_2_SECONDS,
+    SEEK_FORWARD_2_DEFAULT_SECONDS
+  )
   var keepScreenOn by PrefsDelegate(sp, PrefKeys.Setting.SCREEN_ALWAYS_ON, false)
 
   var loadLocalEmbeddedCover by PrefsDelegate(sp, PrefKeys.Setting.LOAD_LOCAL_EMBEDDED_COVER, false)
@@ -305,6 +325,18 @@ class SettingPrefs @Inject constructor(
 
     fun normalizeSkipIntroOutroSeconds(seconds: Int): Int {
       return seconds.coerceIn(SKIP_INTRO_OUTRO_MIN_SECONDS, SKIP_INTRO_OUTRO_MAX_SECONDS)
+    }
+
+    // 播放页快进快退按钮
+    const val SEEK_STEP_MIN_SECONDS = 1
+    const val SEEK_STEP_MAX_SECONDS = 300
+    const val SEEK_BACKWARD_1_DEFAULT_SECONDS = 30
+    const val SEEK_BACKWARD_2_DEFAULT_SECONDS = 10
+    const val SEEK_FORWARD_1_DEFAULT_SECONDS = 10
+    const val SEEK_FORWARD_2_DEFAULT_SECONDS = 30
+
+    fun normalizeSeekStepSeconds(seconds: Int): Int {
+      return seconds.coerceIn(SEEK_STEP_MIN_SECONDS, SEEK_STEP_MAX_SECONDS)
     }
 
     fun normalizeUiFontScale(scale: Float): Float {
