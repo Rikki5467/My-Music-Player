@@ -1361,7 +1361,7 @@ class MusicService : BaseService(),
     when (command) {
       Command.PLAY_AT, Command.SKIP_TO_PREVIOUS, Command.SKIP_TO_NEXT,
       Command.PLAY_PAUSE, Command.PAUSE, Command.PLAY, Command.PLAY_TEMP,
-      Command.SEEK_TO, Command.ADD_TO_NEXT_SONG, Command.CLOSE_NOTIFY -> progressManager.cancelResume()
+      Command.SEEK_TO, Command.SEEK_BY, Command.ADD_TO_NEXT_SONG, Command.CLOSE_NOTIFY -> progressManager.cancelResume()
     }
 
     lastCommand = command
@@ -1462,6 +1462,11 @@ class MusicService : BaseService(),
           seekTo(pos)
         }
       }
+      // 相对快进/快退
+      Command.SEEK_BY -> {
+        val delta = intent.getLongExtra(EXTRA_SEEK_DELTA, 0L)
+        if (delta != 0L) seekBy(delta)
+      }
 
       else -> {
         Timber.v("unknown command")
@@ -1503,6 +1508,24 @@ class MusicService : BaseService(),
       progressManager.saveSource(playback)
       updatePlaybackState()
     }
+  }
+
+  /**
+   * 相对当前进度快进/快退。快进到末尾时停在结尾前 1 秒并暂停，不切歌。
+   */
+  private fun seekBy(delta: Long) {
+    if (!playback.isPrepared) return
+    val duration = playback.duration
+    val target = playback.position + delta
+    if (delta > 0 && duration > 0) {
+      val end = (duration - SEEK_BY_END_MARGIN_MS).coerceAtLeast(0L)
+      if (target >= end) {
+        seekTo(end)
+        if (playback.isPlaying) pause()
+        return
+      }
+    }
+    seekTo(target.coerceAtLeast(0L))
   }
 
   private suspend fun load() {
@@ -1642,6 +1665,9 @@ class MusicService : BaseService(),
     // 片尾检测间隔
     private const val SKIP_INTRO_OUTRO_CHECK_INTERVAL = 200L
 
+    // 相对快进末尾保留边距
+    private const val SEEK_BY_END_MARGIN_MS = 1000L
+
     // 媒体数据库变化
     const val MEDIA_STORE_CHANGE = "$APLAYER_PACKAGE_NAME.media_store.change"
 
@@ -1657,6 +1683,7 @@ class MusicService : BaseService(),
     const val EXTRA_COMMAND = "command"
     const val EXTRA_SHUFFLE = "shuffle"
     const val EXTRA_PROGRESS = "progress"
+    const val EXTRA_SEEK_DELTA = "seek_delta"
     const val ACTION_APPWIDGET_OPERATE = "$APLAYER_PACKAGE_NAME.appwidget.operate"
     const val ACTION_SHORTCUT_SHUFFLE = "$APLAYER_PACKAGE_NAME.shortcut.shuffle"
     const val ACTION_SHORTCUT_MYLOVE = "$APLAYER_PACKAGE_NAME.shortcut.my_love"
