@@ -257,7 +257,7 @@ dependencies {
     }
     implementation(libs.timber)
 
-    debugImplementation(libs.leakcanary)
+    //debugImplementation(libs.leakcanary)
 
     val normalImplementation by configurations
     normalImplementation(libs.bugly)
